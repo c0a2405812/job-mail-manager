@@ -124,10 +124,38 @@ export default function Home() {
     <html>
       <body>
 
-        {/* カテゴリー分類ボタン */}
-        <main>
+        {/*ヘッダー */}
+        <header>
           <h1>Job Mail Manager</h1>
+          <nav>
+            <button>
+              メール一覧
+            </button>
+            <button>
+              分類設定
+            </button>
+            <button>
+              ログアウト
+            </button>
+          </nav>
+        </header>
 
+        {/* メインコンテンツ */}
+        <main>
+
+          { /* 検索欄 */}
+          <br />
+          &emsp;検索<input
+            type="text"
+            placeholder="メール件名,送信者,カテゴリで検索…"
+            value={searchWord}
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
+
+
+          {/* カテゴリー分類ボタン */}  
+          <br /><br />
+          &emsp;カテゴリ選択
           <button onClick={() => setSelectedCategory("すべて")}>
             すべて
           </button>
@@ -144,17 +172,7 @@ export default function Home() {
             個人
           </button>
 
-          
-         { /* メール検索 */}
-          
-          &emsp;検索<input
-            type="text"
-            value={searchWord}
-            onChange={(e) => setSearchWord(e.target.value)}
-          />
-
-
-
+          {/* メール一覧 */}
           {filterMails.map((mail) => (
             <div key={mail.subject}>
               <h3>{mail.subject}</h3>
